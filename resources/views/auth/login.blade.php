@@ -1,7 +1,53 @@
-@extends('layouts.app')
+<html>
+    <head>
+        @include('master.css')
+    </head>
+    <body>
+        <div class="row h-100">
+            <div class="col-lg-6">
+                <img src="{{ asset('images/login.jpg') }}" class="w-100 h-100">
+            </div>
+            <div class="col-lg-6 d-flex align-items-center">
+                <div class="container">
+                    <form method="post" action="{{ route('login') }}">
+                        @csrf
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-lg-8">
+                                <span style="font-weight:700; font-size:50px;">Log <span class="deep-orange-text">In</span></span>
+                            </div>
+                        </div>
+                        <div class="row mt-5 d-flex justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="md-form md-outline input-with-post-icon m-0">
+                                    <input type="email" class="form-control rounded-0" name="email" id="email" placeholder="Email" style="height:50px;">
+                                    <i class="fas fa-envelope input-prefix"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-2 d-flex justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="md-form md-outline input-with-post-icon m-0" style="height:50px;">
+                                    <input type="password" class="form-control rounded-0" name="password" id="password" style="height:50px" placeholder="Password">
+                                    <i class="fas fa-lock input-prefix"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-4 d-flex justify-content-center">
+                            <div class="col-lg-8">
+                                <button type="submit" class="btn btn-deep-orange btn-block rounded-0 z-depth-0">
+                                    Log In
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        @include('master.js')
+    </body>
+</html>
 
-@section('content')
-<div class="container">
+{{-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -69,5 +115,4 @@
             </div>
         </div>
     </div>
-</div>
-@endsection
+</div> --}}

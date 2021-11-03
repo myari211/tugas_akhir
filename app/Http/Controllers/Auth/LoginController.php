@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class LoginController extends Controller
 {
@@ -27,7 +28,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    // protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
@@ -40,10 +41,19 @@ class LoginController extends Controller
     }
 
     public function authenticated(Request $request, $user) {
+
+        $personal_information = DB::table('personal_informations')->where('user_id', $user->id)->count();
+
         if($user->hasRole('Admin')) {
             return redirect()->route('admin.dashboard', $user->id);
         }
-
-        return redirect()->route('user.dashboard', $user->id);
+        elseif($user->hasRole('User')) {
+            if($personal_information > 0 && $personal_information > -1) {
+                return redirect()->route('user.dashboard', $user->id);
+            }
+            else {
+                return redirect()->route('talent.first_personal', $user->id);
+            }
+        }
     }
 }

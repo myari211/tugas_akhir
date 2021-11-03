@@ -35,4 +35,7 @@ Route::middleware('role:Admin')->group(function () {
 
 Route::middleware('role:User')->group(function () {
     Route::get('/user/{id}', 'User\UserController@dashboard')->name('user.dashboard');
+    Route::get('/user/first_profile/personal_information/{id}', 'User\UserController@first_profile_personal_information')->name('talent.first_personal');
 });
+
+Route::get('/chain-city/{id}', 'Ajax\AjaxController@province');

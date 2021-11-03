@@ -9,5 +9,10 @@
     body{
         font-family: 'Montserrat';
     }
+
+    html, body {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
 </style>
 <title>UMKM</title>
