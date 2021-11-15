@@ -164,7 +164,6 @@ return [
         Laravolt\Indonesia\ServiceProvider::class,
         Laravolt\Avatar\ServiceProvider::class,
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
-
         /*
          * Package Service Providers...
          */
@@ -232,6 +231,7 @@ return [
         'Indonesia' => Laravolt\Indonesia\Facade::class,
         'Avatar' => Laravolt\Avatar\Facade::class,
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
+        // 'Carbon' => Carbon\Carbon,
     ],
 
 ];

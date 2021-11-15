@@ -17,8 +17,9 @@
         "laravel/ui": "2.4",
         "laravolt/avatar": "^4.1",
         "laravolt/indonesia": "^0.26",
+        "nesbot/carbon": "^2.54",
         "ramsey/uuid": "^4.2",
-        "realrashid/sweet-alert": "^4.0",
+        "realrashid/sweet-alert": "^4.1",
         "spatie/laravel-permission": "^5.3"
     },
     "require-dev": {

@@ -31,11 +31,20 @@ Route::get('/', function (){
 Route::middleware('role:Admin')->group(function () {
     Route::get('/admin/{id}', 'Admin\AdminController@dashboard')->name('admin.dashboard');
     Route::get('/admin/member_list/{id}', 'Admin\AdminController@member_list')->name('admin.member_list');
+    Route::get('/admin/member/{id}', 'Admin\AdminController@member_details')->name('talent-list');
+    Route::post('/admin/member_list/{id}', 'Admin\AdminController@create_member')->name('create_member');
 });
 
 Route::middleware('role:User')->group(function () {
     Route::get('/user/{id}', 'User\UserController@dashboard')->name('user.dashboard');
     Route::get('/user/first_profile/personal_information/{id}', 'User\UserController@first_profile_personal_information')->name('talent.first_personal');
+    Route::post('/use/first_profile/personal_information/{id}', 'User\UserController@first_profile_personal_post')->name('talent.first.post');
+    Route::get('/user/first_profile/class_information/{id}', 'User\UserController@first_profile_class')->name('talent.class_information');
+
+
+    //avatar
+    Route::post('/user/first_profile/avatar/{id}', 'User\UserController@avatar')->name('avatar');
+    Route::post('/user/first_profile/class_information/{id}', 'User\UserController@class_information')->name('class_information');
 });
 
 Route::get('/chain-city/{id}', 'Ajax\AjaxController@province');

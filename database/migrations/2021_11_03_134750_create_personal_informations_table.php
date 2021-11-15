@@ -19,7 +19,6 @@ class CreatePersonalInformationsTable extends Migration
             $table->char('indonesia_province_location');
             $table->char('indonesia_city_location');
             $table->string('gender');
-            $table->string('avatar');
             $table->text('address');
             $table->string('user_id');
             $table->timestamps();

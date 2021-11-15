@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "23da5057e40570fd40f59eefc152ac63",
+    "content-hash": "7f1531d7752509bba2de94b179ef9c25",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1717,16 +1717,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "2.53.1",
+            "version": "2.54.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "f4655858a784988f880c1b8c7feabbf02dfdf045"
+                "reference": "eed83939f1aed3eee517d03a33f5ec587ac529b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/f4655858a784988f880c1b8c7feabbf02dfdf045",
-                "reference": "f4655858a784988f880c1b8c7feabbf02dfdf045",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/eed83939f1aed3eee517d03a33f5ec587ac529b5",
+                "reference": "eed83939f1aed3eee517d03a33f5ec587ac529b5",
                 "shasum": ""
             },
             "require": {
@@ -1737,6 +1737,7 @@
                 "symfony/translation": "^3.4 || ^4.0 || ^5.0"
             },
             "require-dev": {
+                "doctrine/dbal": "^2.0 || ^3.0",
                 "doctrine/orm": "^2.7",
                 "friendsofphp/php-cs-fixer": "^3.0",
                 "kylekatarnls/multi-tester": "^2.0",
@@ -1807,7 +1808,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-09-06T09:29:23+00:00"
+            "time": "2021-11-01T21:22:20+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -2549,20 +2550,20 @@
         },
         {
             "name": "realrashid/sweet-alert",
-            "version": "v4.0.0",
+            "version": "v4.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/realrashid/sweet-alert.git",
-                "reference": "4923bb91d7144c2ac5dacda0b5e1472fff3d88af"
+                "reference": "7615c5799fbc8743a6b5a7bd7f645f55a1d62723"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/realrashid/sweet-alert/zipball/4923bb91d7144c2ac5dacda0b5e1472fff3d88af",
-                "reference": "4923bb91d7144c2ac5dacda0b5e1472fff3d88af",
+                "url": "https://api.github.com/repos/realrashid/sweet-alert/zipball/7615c5799fbc8743a6b5a7bd7f645f55a1d62723",
+                "reference": "7615c5799fbc8743a6b5a7bd7f645f55a1d62723",
                 "shasum": ""
             },
             "require": {
-                "laravel/framework": "^7.0|^8.0",
+                "laravel/framework": "^5.6|^6.0|^7.0|^8.0",
                 "php": "^7.2|^8.0"
             },
             "require-dev": {
@@ -2635,7 +2636,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-06-14T19:01:35+00:00"
+            "time": "2021-11-06T09:34:33+00:00"
         },
         {
             "name": "spatie/laravel-permission",
@@ -7492,5 +7493,5 @@
         "php": "^7.2.5"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.1.0"
 }
