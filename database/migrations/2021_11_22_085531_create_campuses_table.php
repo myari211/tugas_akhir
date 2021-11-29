@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateClassInformationsTable extends Migration
+class CreateCampusesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,23 +13,20 @@ class CreateClassInformationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('class_informations', function (Blueprint $table) {
-            $table->string('id')->primary();
-            $table->unsignedBigInteger('npm');
-            $table->string('class');
-            $table->string('major');
+        Schema::create('campuses', function (Blueprint $table) {
+            $table->string('id');
+            $table->string('name_university');
             $table->char('province_location');
             $table->char('city_location');
-            $table->string('campus');
-            $table->string('reason');
-            $table->string('user_id');
+            $table->string('address');
+            $table->unsignedBigInteger('phone')->nullable();
+            $table->string('zip_code')->nullable();
             $table->timestamps();
         });
 
-        Schema::table('class_informations', function ($table) {
+        Schema::table('campuses', function ($table) {
             $table->foreign('province_location')->references('id')->on('indonesia_provinces')->onDelete('cascade');
             $table->foreign('city_location')->references('id')->on('indonesia_cities')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -40,6 +37,6 @@ class CreateClassInformationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('class_informations');
+        Schema::dropIfExists('campuses');
     }
 }

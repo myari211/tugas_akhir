@@ -45,6 +45,24 @@
                         </div>
                         <div class="row mt-4">
                             <div class="col-lg-12">
+                                <a data-toggle="collapse" href='#campus' aria-expanded="false" aria-controls="campus" class="text-white d-flex justify-content-between align-items-center hover pr-2 pl-2">
+                                    Campus
+                                    <i class='fas fa-chevron-down'></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="collapse" id="campus">
+                            <div class="row mt-4">
+                                <div class="col-lg-12">
+                                    <a href="{{ route('campus', Auth::user()->id) }}" class="pl-2 pr-2 hover d-flex justify-content-between text-white align-items-center hover pl-2 pr-2">
+                                        Campus List
+                                        <i class="fas fa-school"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col-lg-12">
                                 <a class="pl-2 pr-2 hover d-flex justify-content-between text-white" href="javascript:void();" onclick="document.getElementById('logout').submit();">
                                     Log Out
                                 </a>

@@ -33,6 +33,8 @@ Route::middleware('role:Admin')->group(function () {
     Route::get('/admin/member_list/{id}', 'Admin\AdminController@member_list')->name('admin.member_list');
     Route::get('/admin/member/{id}', 'Admin\AdminController@member_details')->name('talent-list');
     Route::post('/admin/member_list/{id}', 'Admin\AdminController@create_member')->name('create_member');
+    Route::get('/admin/campus/{id}', 'Admin\AdminController@campus')->name('campus');
+    Route::post('/admin/campus/{id}', 'Admin\AdminController@campus_post')->name('campus_post');
 });
 
 Route::middleware('role:User')->group(function () {

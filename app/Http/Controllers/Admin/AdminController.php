@@ -9,6 +9,8 @@ use Ramsey\Uuid\Uuid;
 use Hash;
 use App\User;
 use RealRashid\SweetAlert\Facades\Alert;
+use Laravolt\Indonesia\Models\Province;
+use Validator;
 
 class AdminController extends Controller
 {
@@ -92,5 +94,58 @@ class AdminController extends Controller
             "password" => Hash::make($request->password),
         ]);
         $user->assignRole('User');
+    }
+
+    public function campus() {
+        
+        $province = Province::pluck('name', 'id');
+
+        $campus = DB::table('campuses')
+            ->leftJoin('indonesia_provinces', function ($join) {
+                $join->on('campuses.province_location', '=', 'indonesia_provinces.id');
+            })
+            ->leftJoin('indonesia_cities', function ($join) {
+                $join->on('campuses.city_location', '=', 'indonesia_cities.id');
+            })
+            ->select('*', 'indonesia_provinces.name as province', 'indonesia_cities.name as city')
+            ->get();
+
+        return view('admin.campus', compact('province', 'campus'));
+    }
+
+
+    public function campus_post(Request $request, $id) {
+        $validator = Validator::make($request->all(), [
+            "campus_name" => ['required'],
+            "province" => ['required'],
+            "city" => ['required'],
+            "address" => ['required'],
+            "phone_number" => ['required'],
+            "zip_code" => ['required'],
+        ]);
+
+        if($validator->fails()) {
+            toast($validator->messages()->all()[0], 'error');
+            return redirect()->back();
+        }
+
+        $this->campus_post_process($request);
+
+        toast('Campus Created', 'success');
+        return redirect()->back();
+    }
+
+
+    private function campus_post_process($request) {
+        DB::table('campuses')
+            ->insert([
+                "id" => Uuid::uuid4()->getHex(),
+                "name_university" => $request->campus_name,
+                "province_location" => $request->province,
+                "city_location" => $request->city,
+                "address" => $request->address,
+                "phone" => $request->phone_number,
+                "zip_code" => $request->zip_code,
+            ]);
     }
 }
