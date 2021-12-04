@@ -68,6 +68,7 @@
         </div>
     </nav>
     @yield('content')
+    @include('master.footer')
     @include('master.js')
 </body>
 </html>

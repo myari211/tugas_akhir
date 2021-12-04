@@ -27,15 +27,11 @@ class UserController extends Controller
             ->get();
 
         $class = DB::table('class_informations')
-            ->leftJoin('indonesia_provinces', function ($join) {
-                $join->on('indonesia_provinces.id', '=', 'class_informations.province_location');
+            ->leftJoin('campuses', function($join) {
+                $join->on('class_informations.campus', '=', 'campuses.id');
             })
-            ->leftJoin('indonesia_cities', function ($join) {
-                $join->on('indonesia_cities.id', '=', 'class_informations.city_location');
-            })
-            ->select('*', 'indonesia_cities.name as city', 'indonesia_provinces.name as province')
             ->where('user_id', $id)
-            ->get();
+            ->first();
 
         // dd($personal);
 
@@ -99,7 +95,10 @@ class UserController extends Controller
 
         $provinces = Province::pluck('name', 'id');
 
-        return view('user.first_login.class', compact('provinces'));
+        $campus = DB::table('campuses')
+            ->get();
+
+        return view('user.first_login.class', compact('provinces', 'campus'));
     }
 
     public function avatar(Request $request, $id) {
@@ -125,16 +124,13 @@ class UserController extends Controller
             "npm" => ['required'],
             "class" => ['required'],
             "major" => ['required'],
-            "province" => ['required'],
-            "city" => ['required'],
             "reason" => ['required'],
             "campus" => ['required'],
         ]);
 
         if($validator->fails()) {
-            dd($validator->messages()->all());
             toast($validator->messages()->all()[0], 'error');
-            // return redirect()->back();
+            return redirect()->back();
         }
 
         $this->postClassInformation($request, $id);
@@ -149,8 +145,6 @@ class UserController extends Controller
                 "class" => $request->class,
                 "major" => $request->major,
                 "campus" => $request->campus,
-                "province_location" => $request->province,
-                "city_location" => $request->city,
                 "reason" => $request->reason,
                 "user_id" => $id,
                 "created_at" => Carbon::now(),

@@ -24,7 +24,12 @@
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <label for="campuss">Campus</label>
-                                        <input type="text" name="campus" class="form-control rounded-0" id="campus">
+                                        {{-- <input type="text" name="campus" class="form-control rounded-0" id="campus"> --}}
+                                        <select name="campus" class="form-control rounded-0">
+                                            @foreach($campus as $data)
+                                                <option value="{{ $data->id }}">{{ $data->name_university }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -39,25 +44,6 @@
                                     <div class="form-group">
                                         <label for="class">Class</label>
                                         <input type="text" name="class" class="form-control rounded-0" id="class">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row mt-3">
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label for="province">Provinces</label>
-                                        <select name="province" class="form-control rounded-0" id="provinces">
-                                            @foreach($provinces as $key => $data)
-                                                <option value="{{ $key }}">{{ $data }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label for="city">City</label>
-                                        <select name="city" class="form-control rounded-0" id="city">
-                                        </select>
                                     </div>
                                 </div>
                             </div>

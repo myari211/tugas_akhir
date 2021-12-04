@@ -10,43 +10,52 @@
             </div>
         </div>
         <div class="row mt-5">
-            @foreach($campus as $data)
-                <div class="col-lg-12 mb-3">
-                    <div class="card rounded-0">
-                        <div class='card-body'>
-                            <div class="row">
-                                <div class="col-lg-3">
-                                    <i class="fas fa-school deep-orange-text" style='font-size:100px;'></i>
-                                </div>
-                                <div class="col-lg-6 d-flex align-items-center">
-                                    <div>
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <span style="font-size:30px;">{{ $data->name_university }}</span>
+            @if($campus_count > 0 AND $campus_count != 0)
+                @foreach($campus as $data)
+                    <div class="col-lg-12 mb-3">
+                        <div class="card rounded-0">
+                            <div class='card-body'>
+                                <div class="row">
+                                    <div class="col-lg-3">
+                                        <i class="fas fa-school deep-orange-text" style='font-size:100px;'></i>
+                                    </div>
+                                    <div class="col-lg-6 d-flex align-items-center">
+                                        <div>
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <span style="font-size:30px;">{{ $data->name_university }}</span>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <span>{{ ucwords(strtolower($data->province)) }}, {{ ucwords(strtolower($data->city)) }}</span>
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <span>{{ ucwords(strtolower($data->province)) }}, {{ ucwords(strtolower($data->city)) }}</span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-3 d-flex justify-content-end align-items-start">
-                                    <button type="button" class="btn btn-md rounded-0 p-0 z-depth-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fas fa-ellipsis-v"></i>
-                                    </button>
-                                    <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="#">View</a>
-                                        <a class="dropdown-item" href="#">Edit</a>
-                                        <a class="dropdown-item" href="#">Delete</a>
+                                    <div class="col-lg-3 d-flex justify-content-end align-items-start">
+                                        <button type="button" class="btn btn-md rounded-0 p-0 z-depth-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="#">View</a>
+                                            {{-- <a class="dropdown-item" href="#">Edit</a> --}}
+                                            <a class="dropdown-item" href="javascript:void();" onclick="document.getElementById('campus_delete').submit();">Delete</a>
+                                            <form method="post" action="{{ route('campus_delete', $data->campus_id) }}" id="campus_delete">
+                                                @csrf
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                @endforeach
+            @else
+                <div class="col-lg-12 mt-4 d-flex justify-content-center">
+                    <img src="{{ asset('images/ilustration_not_found.jpg') }}" style="width:600px; height:600px;">
                 </div>
-            @endforeach
+            @endif
         </div>
 
 

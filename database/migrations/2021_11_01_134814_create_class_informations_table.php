@@ -18,18 +18,15 @@ class CreateClassInformationsTable extends Migration
             $table->unsignedBigInteger('npm');
             $table->string('class');
             $table->string('major');
-            $table->char('province_location');
-            $table->char('city_location');
-            $table->string('campus');
+            $table->string('campus')->nullable();
             $table->string('reason');
             $table->string('user_id');
             $table->timestamps();
         });
 
         Schema::table('class_informations', function ($table) {
-            $table->foreign('province_location')->references('id')->on('indonesia_provinces')->onDelete('cascade');
-            $table->foreign('city_location')->references('id')->on('indonesia_cities')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('campus')->references('id')->on('campuses')->onDelete('cascade');
         });
     }
 

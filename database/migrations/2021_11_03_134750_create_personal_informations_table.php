@@ -27,7 +27,7 @@ class CreatePersonalInformationsTable extends Migration
         Schema::table('personal_informations', function (Blueprint $table) {
             $table->foreign('indonesia_province_location')->references('id')->on('indonesia_provinces');
             $table->foreign('indonesia_city_location')->references('id')->on('indonesia_cities');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

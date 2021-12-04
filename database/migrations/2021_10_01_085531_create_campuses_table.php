@@ -14,7 +14,7 @@ class CreateCampusesTable extends Migration
     public function up()
     {
         Schema::create('campuses', function (Blueprint $table) {
-            $table->string('id');
+            $table->string('id')->primary();
             $table->string('name_university');
             $table->char('province_location');
             $table->char('city_location');

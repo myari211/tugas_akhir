@@ -107,10 +107,13 @@ class AdminController extends Controller
             ->leftJoin('indonesia_cities', function ($join) {
                 $join->on('campuses.city_location', '=', 'indonesia_cities.id');
             })
-            ->select('*', 'indonesia_provinces.name as province', 'indonesia_cities.name as city')
+            ->select('*', 'indonesia_provinces.name as province', 'indonesia_cities.name as city', 'campuses.id as campus_id')
             ->get();
 
-        return view('admin.campus', compact('province', 'campus'));
+        $campus_count = DB::table('campuses')
+            ->count();
+
+        return view('admin.campus', compact('province', 'campus', 'campus_count'));
     }
 
 
@@ -147,5 +150,19 @@ class AdminController extends Controller
                 "phone" => $request->phone_number,
                 "zip_code" => $request->zip_code,
             ]);
+    }
+
+
+    public function campus_delete($id) {
+        $this->campus_delete_process($id);
+    
+        toast('Successfully Delete Campus', 'success');
+        return redirect()->back();
+    }
+
+    private function campus_delete_process($id) {
+        DB::table('campuses')
+            ->where('id', $id)
+            ->delete();
     }
 }

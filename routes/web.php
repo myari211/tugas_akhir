@@ -26,6 +26,9 @@ Route::get('/', function (){
     return view('guest.index');
 });
 
+Route::get('/history', 'Guest\GuestController@history')->name('guest.history');
+Route::get('/profile', 'Guest\GuestController@profile')->name('guest.profile');
+
 
 
 Route::middleware('role:Admin')->group(function () {
@@ -35,6 +38,7 @@ Route::middleware('role:Admin')->group(function () {
     Route::post('/admin/member_list/{id}', 'Admin\AdminController@create_member')->name('create_member');
     Route::get('/admin/campus/{id}', 'Admin\AdminController@campus')->name('campus');
     Route::post('/admin/campus/{id}', 'Admin\AdminController@campus_post')->name('campus_post');
+    Route::post('/admin/campus/delete/{id}', 'Admin\AdminController@campus_delete')->name('campus_delete');
 });
 
 Route::middleware('role:User')->group(function () {
