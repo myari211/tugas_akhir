@@ -37,10 +37,10 @@ class AdminController extends Controller
                 $join->on('class_informations.user_id', '=', 'users.id');
             }) 
             ->leftJoin('indonesia_provinces', function ($join) {
-                $join->on('indonesia_provinces.id', '=', 'class_informations.province_location');
+                $join->on('indonesia_provinces.id', '=', 'personal_informations.indonesia_province_location');
             })
             ->leftJoin('indonesia_cities', function ($join) {
-                $join->on('indonesia_cities.id', '=', 'class_informations.city_location');
+                $join->on('indonesia_cities.id', '=', 'personal_informations.indonesia_city_location');
             })
             ->select('*', 'indonesia_provinces.name as province', 'indonesia_cities.name as city', 'users.id as user_id')
             ->where('role_id', 2)
