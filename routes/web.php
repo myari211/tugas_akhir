@@ -19,15 +19,18 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::get('/', function (){
-    return view('guest.index');
-});
+// Route::get('/', function (){
+//     return view('guest.index');
+// });
 
+Route::get('/home', 'Guest\GuestController@index')->name('guest.home');
+Route::get('/', 'Guest\GuestController@index')->name('guest.index');
 Route::get('/history', 'Guest\GuestController@history')->name('guest.history');
 Route::get('/profile', 'Guest\GuestController@profile')->name('guest.profile');
+Route::post('/user/register', 'Guest\GuestController@register')->name('guest.register');
 
 
 
@@ -44,7 +47,7 @@ Route::middleware('role:Admin')->group(function () {
 Route::middleware('role:User')->group(function () {
     Route::get('/user/{id}', 'User\UserController@dashboard')->name('user.dashboard');
     Route::get('/user/first_profile/personal_information/{id}', 'User\UserController@first_profile_personal_information')->name('talent.first_personal');
-    Route::post('/use/first_profile/personal_information/{id}', 'User\UserController@first_profile_personal_post')->name('talent.first.post');
+    Route::post('/user/first_profile/personal_information/{id}', 'User\UserController@first_profile_personal_post')->name('talent.first.post');
     Route::get('/user/first_profile/class_information/{id}', 'User\UserController@first_profile_class')->name('talent.class_information');
 
 

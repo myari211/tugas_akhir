@@ -60,6 +60,7 @@
                     <button type="button" class="deep-orange rounded-0 btn btn-md z-depth-0 text-white" onclick="location.href='/login';">
                         Sign In
                     </button>
+                    <button type="button" class="btn btn-md rounde z-depth-0 text-capitalize m-0" style="font-weight: 600" onclick="location.href='/register';">Register</button>
                 </div>
             </div>
         </nav>
